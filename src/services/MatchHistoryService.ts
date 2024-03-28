@@ -8,7 +8,7 @@ import { useCallback } from "react";
 import { sendDataToGoogleSheets } from "./GoogleFormsService";
 
 const matchHistoryDataEndpoint =
-    "https://docs.google.com/spreadsheets/d/1FsjnGp3JPsqAEmlyWlxmYK5pSwGASqfIcDl9HvD-fuk/gviz/tq?gid=1885300192";
+    "https://docs.google.com/spreadsheets/d/10eWdGa4LV5szdAzHAdgx9VIlxHJdVrwQJorHwBAU5I4/gviz/tq?gid=1885300192";
 const matchHistorySubmitEndpoint =
     "https://docs.google.com/forms/d/e/1FAIpQLScguPsS2TOxaABYLtbCDZ5zPXec2av9AI2kPI2JFwYqmghBYQ/formResponse";
 

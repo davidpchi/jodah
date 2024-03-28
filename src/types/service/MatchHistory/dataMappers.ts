@@ -3,17 +3,10 @@ import { Match } from "../../domain/Match";
 import { MatchPlayer } from "../../domain/MatchPlayer";
 import { SheetRow } from "./SheetData";
 
-function matchPlayerHelper(
-    cell: SheetRow,
-    nameIndex: number,
-    commanderIndex: number,
-    positionIndex: number,
-    rankIndex: number
-): MatchPlayer {
+function matchPlayerHelper(cell: SheetRow, nameIndex: number, commanderIndex: number, rankIndex: number): MatchPlayer {
     const nameData = cell.c[nameIndex];
     const commanderData = cell.c[commanderIndex];
     const rankData = cell.c[rankIndex];
-    const turnData = cell.c[positionIndex];
 
     const commanders = commanderData ? commanderData.v.toString().split(" && ") : [];
 
@@ -21,7 +14,7 @@ function matchPlayerHelper(
         name: nameData ? nameData.v.toString() : "",
         commanders: commanders,
         rank: rankData ? rankData.v.toString() : "",
-        turnPosition: turnData ? turnData.v.toString() : ""
+        turnPosition: ""
     };
 
     return player;
@@ -30,10 +23,10 @@ function matchPlayerHelper(
 export function sheetRowToMatch(cell: SheetRow, id: string): Match {
     const date = cell.c[2];
 
-    const player1 = matchPlayerHelper(cell, 3, 4, 5, 6);
-    const player2 = matchPlayerHelper(cell, 7, 8, 9, 10);
-    const player3 = matchPlayerHelper(cell, 11, 12, 13, 14);
-    const player4 = matchPlayerHelper(cell, 15, 16, 17, 18);
+    const player1 = matchPlayerHelper(cell, 1, 2, 3);
+    const player2 = matchPlayerHelper(cell, 4, 5, 6);
+    const player3 = matchPlayerHelper(cell, 7, 8, 9);
+    const player4 = matchPlayerHelper(cell, 10, 11, 12);
 
     const numberOfTurns = cell.c[19];
 
