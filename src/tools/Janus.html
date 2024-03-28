@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Janus</h2>
+
+    <div id="demo" style="display: flex; flex-direction: column;">
+        <br>Special Cases:
+        <textarea id="extraAdds" style="width:500px;height:500px;">Witch of the Moors;Tamanoa</textarea>
+        <br>Output:
+        <textarea id="commanderList" style="width:500px;height:500px; margin-bottom: 16px;"></textarea>
+        <button type="button" onclick="run()">Run</button>
+    </div>
+    </div>
+
+    <!-- Below script can run if file is opened in browser -->
+    <!-- Copy and paste script results into ~/src/services/commanderList.ts -->
+    <script>
+        async function run() {
+            document.getElementById("commanderList").value = `export const commanderList: { [friendlyName: string]: { id: string, image: string, colorIdentity: string[], name: string, scryfallUri: string } } = {`;
+
+            const delay = async (ms) => new Promise(res => setTimeout(res, ms));
+
+            const getCommanderData = (item) => {
+                if (item.image_uris === undefined || item.image_uris.normal === undefined) {
+                    return `"${item.name.replaceAll('"', "\\\"")}": { id: "${item.id}", image: "${item.card_faces[0].image_uris.normal}", colorIdentity: ["${item.color_identity.join(`","`)}"], scryfallUri: "${item.scryfall_uri}", name: \`${item.name}\` },${"\r\n"}`;
+                } else {
+                    return `"${item.name.replaceAll('"', "\\\"")}": { id: "${item.id}", image: "${item.image_uris.normal}", colorIdentity: ["${item.color_identity.join(`","`)}"], scryfallUri: "${item.scryfall_uri}", name: \`${item.name}\` }, ${"\r\n"}`;
+                }
+            }
+
+            let nextPageUrl = "https://api.scryfall.com/cards/search?q=is:commander%20-is:digital";
+
+            while (nextPageUrl !== undefined) {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // document.getElementById("demo").innerHTML =
+                        //     this.responseText;
+                        const result = JSON.parse(this.responseText);
+                        nextPageUrl = result.next_page;
+                        const data = result.data;
+                        for (const item of data) {
+                            document.getElementById("commanderList").value += getCommanderData(item);
+                        }
+                    }
+                };
+                xhttp.open("GET", nextPageUrl, true);
+                xhttp.send();
+                await delay(5000);
+            }
+
+            // now we loop through all of the special cases
+            const rawExtras = document.getElementById("extraAdds").value;
+            const specials = rawExtras.split(";");
+
+            let currentIndex = 0;
+            if (specials[currentIndex] !== undefined && specials[currentIndex] !== "") {
+                let specialQuery = "https://api.scryfall.com/cards/named?fuzzy=" + specials[currentIndex];
+
+                while (specialQuery !== undefined) {
+                    const xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            // document.getElementById("demo").innerHTML =
+                            //     this.responseText;
+                            const result = JSON.parse(this.responseText);
+
+                            currentIndex++;
+                            if (specials[currentIndex] !== undefined) {
+                                // more special cases to loop through
+                                specialQuery = "https://api.scryfall.com/cards/named?fuzzy=" + specials[currentIndex];
+                            } else {
+                                // no more special cases
+                                specialQuery = undefined;
+                            }
+                            const item = result;
+
+                            document.getElementById("commanderList").value += getCommanderData(item);
+                        }
+                    };
+                    xhttp.open("GET", specialQuery, true);
+                    xhttp.send();
+                    await delay(5000);
+                }
+            }
+
+            alert("finished!");
+        }
+    </script>
+
+</body>
+
+</html>
