@@ -16,8 +16,7 @@ const LinkItems: Array<LinkItemProps> = [
     { name: "Player Overview", icon: FiUsers, route: "/playerOverview" },
     { name: "Commander Overview", icon: FiShield, route: "/commanderOverview" },
     { name: "Commander Trends", icon: FiBarChart, route: "/commanderTrends" },
-    { name: "Match History", icon: FiCalendar, route: "/matchHistory" },
-    { name: "Match Trends", icon: FiTrendingUp, route: "/matchTrends" }
+    { name: "Match History", icon: FiCalendar, route: "/matchHistory" }
 ];
 
 interface SidebarProps extends BoxProps {
@@ -48,7 +47,7 @@ export const Sidebar = ({ onClose, ...rest }: SidebarProps) => {
                     noOfLines={1}
                     paddingLeft={"16px"}
                 >
-                    Project Toski
+                    Jodah
                 </Text>
             </Flex>
             <VStack

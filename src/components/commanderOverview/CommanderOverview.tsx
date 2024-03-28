@@ -51,7 +51,7 @@ export const CommanderOverview = React.memo(function MatchHistory() {
                 justifyContent={"center"}
             >
                 <DatePicker onChange={onDatePickerChange} value={dateFilter} />
-                <Tooltip
+                {/* <Tooltip
                     label={<p style={{ textAlign: "center" }}>Commanders play 5 games to be qualified.</p>}
                     hasArrow
                     arrowSize={15}
@@ -61,7 +61,7 @@ export const CommanderOverview = React.memo(function MatchHistory() {
                             {"Show only qualified"}
                         </Checkbox>
                     </Box>
-                </Tooltip>
+                </Tooltip> */}
                 <Box padding={"8px"}>
                     <Input placeholder="Filter by..." onChange={onSearchChange} value={searchInput} />
                 </Box>

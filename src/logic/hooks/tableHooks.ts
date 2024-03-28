@@ -13,7 +13,7 @@ export const useTableFilters = () => {
     // try to get the qualified filter out of the search params
     const onlyQualifiedParamRaw = searchParams.get("onlyQualified");
     // the default value for the qualified param is true
-    const onlyQualifiedParam = onlyQualifiedParamRaw !== null ? onlyQualifiedParamRaw === "true" : true;
+    const onlyQualifiedParam = onlyQualifiedParamRaw !== null ? onlyQualifiedParamRaw === "true" : false;
     // try to get the free form name filter out of the search params
     const nameFilterParamRaw = searchParams.get("filter");
     const nameFilterParam = nameFilterParamRaw !== null ? nameFilterParamRaw : "";

@@ -21,13 +21,11 @@ const LinkItems: Array<LinkItemProps> = [
     { name: "Player Overview", icon: FiUsers, route: "/playerOverview" },
     { name: "Commander Overview", icon: FiShield, route: "/commanderOverview" },
     { name: "Commander Trends", icon: FiBarChart, route: "/commanderTrends" },
-    { name: "Match History", icon: FiCalendar, route: "/matchHistory" },
-    { name: "Match Trends", icon: FiTrendingUp, route: "/matchTrends" }
+    { name: "Match History", icon: FiCalendar, route: "/matchHistory" }
 ];
 
 export default function AppFrame({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const location = useLocation();
 
     const linkItems = [...LinkItems];
 
@@ -102,7 +100,6 @@ export default function AppFrame({ children }: { children: ReactNode }) {
                     </Flex>
                 </Box>
             </Box>
-            <FeedbackButton />
         </>
     );
 }

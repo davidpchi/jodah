@@ -36,7 +36,16 @@ export const matchHistoryColumns: ColumnDef<Match, any>[] = [
                     value.commanders[2] !== undefined ? `with companion ${value.commanders[2]}` : undefined;
                 return (
                     <Flex key={index} flexDirection={"column"}>
-                        <Text style={{wordWrap:"break-word", whiteSpace: "normal", paddingLeft: "16px", textIndent: "-16px"}}>{value.name + " playing " + commanderText}</Text>
+                        <Text
+                            style={{
+                                wordWrap: "break-word",
+                                whiteSpace: "normal",
+                                paddingLeft: "16px",
+                                textIndent: "-16px"
+                            }}
+                        >
+                            {value.name + " playing " + commanderText}
+                        </Text>
                         {companionText !== undefined ? <Text paddingLeft={2}>{companionText}</Text> : null}
                     </Flex>
                 );
@@ -69,12 +78,12 @@ export const matchHistoryColumns: ColumnDef<Match, any>[] = [
             );
         },
         header: () => <span>Winner</span>
-    }),
-    columnHelper.accessor((row) => row.numberOfTurns, {
-        id: "numberOfTurns",
-        cell: (info) => {
-            return <div>{info.row.original.numberOfTurns}</div>;
-        },
-        header: () => <span>Turn Count</span>
     })
+    // columnHelper.accessor((row) => row.numberOfTurns, {
+    //     id: "numberOfTurns",
+    //     cell: (info) => {
+    //         return <div>{info.row.original.numberOfTurns}</div>;
+    //     },
+    //     header: () => <span>Turn Count</span>
+    // })
 ];
