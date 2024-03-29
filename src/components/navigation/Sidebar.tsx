@@ -1,9 +1,11 @@
 import { IconType } from "react-icons";
 import { FiBarChart, FiCalendar, FiHome, FiShield, FiTrendingUp, FiUsers } from "react-icons/fi";
 
-import { Box, useColorModeValue, Flex, CloseButton, VStack, BoxProps, Text } from "@chakra-ui/react";
+import { Box, useColorModeValue, Flex, CloseButton, VStack, BoxProps, Text, Image } from "@chakra-ui/react";
 
 import { SidebarNavItem } from "./SidebarNavItem";
+
+import jodah from "../../assets/jodah.png";
 
 interface LinkItemProps {
     name: string;
@@ -37,18 +39,30 @@ export const Sidebar = ({ onClose, ...rest }: SidebarProps) => {
             {...rest}
             boxShadow={"0px 12px 18px 2px rgba(0,0,0,0.3)"}
         >
-            <Flex h="56px" align="center" paddingRight={"8px"} paddingLeft={"20px"} backgroundColor={"white"}>
+            <Flex
+                h="56px"
+                alignItems="center"
+                justifyContent={"space-between"}
+                paddingRight={"8px"}
+                paddingLeft={"20px"}
+                backgroundColor={"white"}
+                paddingTop={"20px"}
+                flexDirection={"row"}
+            >
+                <Flex flexDirection={"row"} alignItems={"center"}>
+                    <Image src={jodah} width={"48px"} height={"48px"} />
+                    <Text
+                        fontSize="20"
+                        fontWeight="bold"
+                        textTransform="uppercase"
+                        color="gray.600"
+                        noOfLines={1}
+                        paddingLeft={"16px"}
+                    >
+                        Jodah
+                    </Text>
+                </Flex>
                 <CloseButton onClick={onClose} />
-                <Text
-                    fontSize="20"
-                    fontWeight="bold"
-                    textTransform="uppercase"
-                    color="gray.600"
-                    noOfLines={1}
-                    paddingLeft={"16px"}
-                >
-                    Jodah
-                </Text>
             </Flex>
             <VStack
                 spacing="24px"

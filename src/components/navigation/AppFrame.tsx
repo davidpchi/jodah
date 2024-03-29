@@ -38,6 +38,7 @@ export default function AppFrame({ children }: { children: ReactNode }) {
                     left: "4px",
                     top: "4px"
                 }}
+                display={{ base: "none", md: "flex" }}
                 marginBottom={"16px"}
                 flexDirection={"column"}
             >

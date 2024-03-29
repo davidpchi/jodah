@@ -9,16 +9,16 @@ import { Heading } from "./components/heading";
 import { Text } from "./components/text";
 
 export const primaryColor = {
-    50: "#d2dace",
-    100: "#a5b59e",
-    200: "#78906d",
-    300: "#4a6a3d",
-    400: "#1e460d",
-    500: "#18380a",
-    600: "#122a07",
-    700: "#0f2306",
-    800: "#0c1c05",
-    900: "#091503",
+    50: "#CCF3EB",
+    100: "#88E1DC",
+    200: "#66D4D6",
+    300: "#44BFCB",
+    400: "#22A6BF",
+    500: "#008AB2",
+    600: "#00589F",
+    700: "#002D8A",
+    800: "#000B75",
+    900: "#01005F"
 };
 
 export const secondaryColor = {
@@ -31,7 +31,7 @@ export const secondaryColor = {
     600: "#2d8a88",
     700: "#2a7a77",
     800: "#286a66",
-    900: "#224d49",
+    900: "#224d49"
 };
 
 export const acorn = extendTheme({
@@ -39,14 +39,14 @@ export const acorn = extendTheme({
         primary: primaryColor,
         secondary: secondaryColor,
         bodyFont: "#718096",
-        background: "#F8F9FA",
+        background: "#F8F9FA"
     },
     styles: {
         global: (props: StyleFunctionProps | Record<string, any>) => ({
             body: {
-                bg: mode("background", "black")(props),
-            },
-        }),
+                bg: mode("background", "black")(props)
+            }
+        })
     },
     components: {
         Button,
@@ -55,6 +55,6 @@ export const acorn = extendTheme({
         Table,
         Tabs,
         Heading,
-        Text,
-    },
+        Text
+    }
 });
