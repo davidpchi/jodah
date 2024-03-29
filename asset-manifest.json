@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/jodah/static/css/main.f4d06287.css",
-    "main.js": "/jodah/static/js/main.63d0a334.js",
+    "main.js": "/jodah/static/js/main.f7e71acc.js",
     "static/js/787.5938f32d.chunk.js": "/jodah/static/js/787.5938f32d.chunk.js",
     "static/media/jodah.png": "/jodah/static/media/jodah.e2449476bc135e654958.png",
     "index.html": "/jodah/index.html",
     "main.f4d06287.css.map": "/jodah/static/css/main.f4d06287.css.map",
-    "main.63d0a334.js.map": "/jodah/static/js/main.63d0a334.js.map",
+    "main.f7e71acc.js.map": "/jodah/static/js/main.f7e71acc.js.map",
     "787.5938f32d.chunk.js.map": "/jodah/static/js/787.5938f32d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f4d06287.css",
-    "static/js/main.63d0a334.js"
+    "static/js/main.f7e71acc.js"
   ]
 }
