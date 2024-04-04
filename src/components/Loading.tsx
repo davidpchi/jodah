@@ -7,7 +7,7 @@ export const Loading = React.memo(function Loading({ text }: { text: string }) {
     return (
         <Flex minHeight="100vh" justify="center" align="start">
             <Flex width="100%" height="100%" justify="center" align="center" flexDirection="column">
-                <Flex alignItems={"center"} justifyContent={"center"}>
+                <Flex alignItems={"center"} justifyContent={"center"} marginTop={"64px"} height={"275px"}>
                     <Spinner
                         style={{
                             position: "absolute",
@@ -17,10 +17,10 @@ export const Loading = React.memo(function Loading({ text }: { text: string }) {
                         size={"xl"}
                     />
                     <img
-                        alt="squirrel gif"
+                        alt="loading gif"
                         style={{
-                            width: "25%",
-                            height: "25%",
+                            maxWidth: "250px",
+                            maxHeight: "250px",
                             objectFit: "contain"
                         }}
                         src={process.env.PUBLIC_URL + "/jodah.png"}
