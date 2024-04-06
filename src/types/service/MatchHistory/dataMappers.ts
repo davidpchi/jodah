@@ -21,7 +21,7 @@ function matchPlayerHelper(cell: SheetRow, nameIndex: number, commanderIndex: nu
 }
 
 export function sheetRowToMatch(cell: SheetRow, id: string): Match {
-    const date = cell.c[2];
+    const date = cell.c[0];
 
     const player1 = matchPlayerHelper(cell, 1, 2, 3);
     const player2 = matchPlayerHelper(cell, 4, 5, 6);
