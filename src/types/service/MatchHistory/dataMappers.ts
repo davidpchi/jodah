@@ -104,7 +104,7 @@ export function getPlayerWinRate(matches: Match[], playerName: string): { name: 
             // If player is in the game and the game had a valid number of players, increment game
             if (
                 playerName === currentMatch.players[j].name &&
-                currentMatch.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH
+                currentMatch.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH
             ) {
                 validMatches++;
 

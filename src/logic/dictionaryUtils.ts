@@ -102,16 +102,16 @@ export function matchesToCommanderHelper(
                         name: currentCommanderName,
                         colorIdentity: commander.colorIdentity,
                         matches: [currentMatch.id],
-                        validMatchesCount: currentMatch.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH ? 1 : 0,
+                        validMatchesCount: currentMatch.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH ? 1 : 0,
                         wins:
-                            player.rank === "1" && currentMatch.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH
+                            player.rank === "1" && currentMatch.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH
                                 ? 1
                                 : 0
                     };
                 } else {
                     // since this commander exists, update the currentMatch count
                     playedCommanderDictionary[potentialCommanderObj.id].matches.push(currentMatch.id);
-                    if (currentMatch.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH) {
+                    if (currentMatch.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH) {
                         if (player.rank === "1") {
                             playedCommanderDictionary[potentialCommanderObj.id].wins++;
                         }
@@ -173,9 +173,9 @@ export function matchesToPlayersHelper(
                     playerDictionary[player.name] = {
                         name: player.name,
                         matches: [currentMatch],
-                        validMatchesCount: currentMatch.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH ? 1 : 0,
+                        validMatchesCount: currentMatch.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH ? 1 : 0,
                         wins:
-                            player.rank === "1" && currentMatch.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH
+                            player.rank === "1" && currentMatch.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH
                                 ? 1
                                 : 0,
                         colorProfile: colorProfile
@@ -183,7 +183,7 @@ export function matchesToPlayersHelper(
                 } else {
                     // since this player exists, update the currentMatch count
                     playerDictionary[player.name].matches.push(currentMatch);
-                    if (currentMatch.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH) {
+                    if (currentMatch.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH) {
                         if (player.rank === "1") {
                             playerDictionary[player.name].wins++;
                         }

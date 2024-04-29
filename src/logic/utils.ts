@@ -63,7 +63,7 @@ export function getAverageWinTurn(player: Player) {
     // Get win turn for every match win
     for (const match of player.matches) {
         // Exclude matches where player isn't a winner and player count requirement isn't filled
-        if (player.name === match.winner && match.players.length === NUMBER_OF_PLAYERS_FOR_VALID_MATCH) {
+        if (player.name === match.winner && match.players.length >= NUMBER_OF_PLAYERS_FOR_VALID_MATCH) {
             // Exclude wins without turns data
             if (Number(match.numberOfTurns) > 0) {
                 winTurns.push(Number(match.numberOfTurns));
@@ -88,14 +88,14 @@ export function getAverageWinTurn(player: Player) {
  */
 export function isNewlyQualifiedPlayer(player: Player) {
     const currentDate = new Date();
-    const dateOffset = (currentDate.getTime() - NEW_PLAYER_HIGHLIGHT_DAYS * 24 * 60 * 60 * 1000);
+    const dateOffset = currentDate.getTime() - NEW_PLAYER_HIGHLIGHT_DAYS * 24 * 60 * 60 * 1000;
 
     // TODO: This logic does not gracefully handle matches that are not valid. We don't really run into this very often
     // though, so we acknowledge this bug and will revisit it when it comes up (invalid matches are not really recorded anymore)
     if (
         PLAYER_MINIMUM_GAMES_REQUIRED <= player.validMatchesCount &&
         player.validMatchesCount <= PLAYER_MAXIMUM_GAMES_AS_NEW_PLAYER &&
-        // we should only be looking at the match that qualified the player (aka the PLAYER_MINIMUM_GAMES_REQUIRED match) 
+        // we should only be looking at the match that qualified the player (aka the PLAYER_MINIMUM_GAMES_REQUIRED match)
         // to determine if we should render the label
         dateOffset < player.matches[PLAYER_MINIMUM_GAMES_REQUIRED - 1].date.getTime()
     ) {
