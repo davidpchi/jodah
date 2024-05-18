@@ -116,5 +116,9 @@ export function getPlayerWinRate(matches: Match[], playerName: string): { name: 
         }
     }
 
-    return { name: playerName, winR: wins / validMatches, loseR: 1 - wins / validMatches };
+    return {
+        name: playerName,
+        winR: wins / validMatches,
+        loseR: 1 - wins / validMatches
+    };
 }
